@@ -1,6 +1,5 @@
 import express from "express";
-import {createSkilllisting, getSkilllistingById, getSkilllistingsForUser,  deleteSkilllisting} from "../controllers/skilrequestRoute.js";
-import { createSkillrequest } from "../controllers/skillrequestController.js";
+import { createSkillrequest, getSkillrequestById, getSkillrequestsForUser, deleteSkillrequest } from "../controllers/skillrequestController.js";
 
 const router = express.Router();
 router.post("/", createSkillrequest);
