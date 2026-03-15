@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate, Navigate } from 'react-router-dom';
 import { LogOut, Home, User, BookOpen, UserPlus, FilePlus, Bell } from 'lucide-react';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -63,14 +63,14 @@ function App() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/" element={token ? <Dashboard /> : <Login />} />
-          <Route path="/profile" element={token ? <Profile /> : <Login />} />
-          <Route path="/listings" element={token ? <Listings /> : <Login />} />
-          <Route path="/create-listing" element={token ? <CreateListing /> : <Login />} />
-          <Route path="/listings/:id" element={token ? <ListingDetails /> : <Login />} />
-          <Route path="/requests" element={token ? <Requests /> : <Login />} />
+          <Route path="/login" element={token ? <Navigate to="/" /> : <Login />} />
+          <Route path="/register" element={token ? <Navigate to="/" /> : <Register />} />
+          <Route path="/" element={token ? <Dashboard /> : <Navigate to="/login" />} />
+          <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
+          <Route path="/listings" element={token ? <Listings /> : <Navigate to="/login" />} />
+          <Route path="/create-listing" element={token ? <CreateListing /> : <Navigate to="/login" />} />
+          <Route path="/listings/:id" element={token ? <ListingDetails /> : <Navigate to="/login" />} />
+          <Route path="/requests" element={token ? <Requests /> : <Navigate to="/login" />} />
         </Routes>
       </main>
     </div>
